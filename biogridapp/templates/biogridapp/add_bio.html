@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nueva biografía</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial; background:#f2f2f2; margin:0; color:#333}
+    .wrap{max-width:600px; margin:32px auto; background:#fff; padding:30px; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,.08)}
+    h1{margin-top:0 auto ; text-align: center; font-weight: 800; }
+    label{display:block; margin:20px 0 6px; font-weight:600}
+    input,textarea{width:80%; padding:10px; border:1px solid #ccc; border-radius:8px}
+    textarea{min-height:140px}
+    .row{display:grid; grid-template-columns:1fr 1fr}
+    .actions{margin-top:18px; display:flex; gap:12px}
+    .btn{appearance:none; border:none; border-radius:8px; padding:10px 14px; cursor:pointer}
+    .primary{background:#111; color:#fff}
+    .ghost{background:#eee}
+  
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>NUEVA BIOGRAFÍA</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label>Nombre</label>{{ form.name }}
+      <label>Ocupación</label>{{ form.occupation }}
+      <div class="row">
+        <div><label>Nacimiento</label>{{ form.birth }}</div>
+        <div><label>Muerte</label>{{ form.death }}</div>
+      </div>
+      <label>Nacionalidad</label>{{ form.nationality }}
+      <label>Imagen (JPG/PNG)</label>{{ form.image }}
+      <label>Resumen</label>{{ form.summary }}
+      <div class="actions">
+        <button class="btn primary" type="submit">Guardar</button>
+        <a class="btn ghost" href="{% url 'home' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
